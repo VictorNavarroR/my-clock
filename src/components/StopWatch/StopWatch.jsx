@@ -21,10 +21,18 @@ const StopWatch = () => {
     return (
       <div className="stopwatch">
         <h2>{time}</h2>
-        <button className="start" onClick={() => setTimerOn(true)}>Start</button>
-        <button className="stop" onClick={() => setTimerOn(false)}>Stop</button>
-        <button className="resume" onClick={() => setTimerOn(true)}>Resume</button>
-        <button className="reset" onClick={() => setTime(0)}>Reset</button>
+        <div id="buttons">
+        {!timerOn && time === 0 && (
+          <button className="start" onClick={() => setTimerOn(true)}>Start</button>
+        )}
+        {timerOn && <button className="stop" onClick={() => setTimerOn(false)}>Stop</button>}
+        {!timerOn && time > 0 && (
+          <button className="reset" onClick={() => setTime(0)}>Reset</button>
+        )}
+        {!timerOn && time > 0 && (
+          <button className="resume" onClick={() => setTimerOn(true)}>Resume</button>
+        )}
+      </div>
       </div>
     );
   };
